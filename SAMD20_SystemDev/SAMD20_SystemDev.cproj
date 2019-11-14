@@ -34,9 +34,10 @@
     <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common2.services.delay" value="Add" config="systick" content-id="Atmel.ASF" />
     <option id="sam0.drivers.port" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="sam0.drivers.sercom.usart" value="Add" config="callback" content-id="Atmel.ASF" />
     <option id="sam0.drivers.system" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.drivers.system.clock" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="sam0.drivers.sercom.usart" value="Add" config="callback" content-id="Atmel.ASF" />
+    <option id="sam0.drivers.sercom.i2c.master" value="Add" config="callback" content-id="Atmel.ASF" />
     <option id="sam0.utils.linker_scripts" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations />
@@ -209,6 +210,14 @@
     <file path="src/ASF/sam0/drivers/sercom/usart/quick_start_callback/qs_usart_callback.h" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\quick_start_callback\qs_usart_callback.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/sam0/drivers/sercom/usart/usart.h" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\usart.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/sam0/drivers/sercom/usart/quick_start_dma/qs_usart_dma_use.h" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\quick_start_dma\qs_usart_dma_use.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/i2c/i2c_master_interrupt.h" framework="" version="3.40.0" source="sam0\drivers\sercom\i2c\i2c_master_interrupt.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/i2c/i2c_common.h" framework="" version="3.40.0" source="sam0\drivers\sercom\i2c\i2c_common.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/i2c/quick_start_master_callback/qs_i2c_master_callback.h" framework="" version="3.40.0" source="sam0\drivers\sercom\i2c\quick_start_master_callback\qs_i2c_master_callback.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/i2c/quick_start_master/qs_i2c_master_basic_use.h" framework="" version="3.40.0" source="sam0\drivers\sercom\i2c\quick_start_master\qs_i2c_master_basic_use.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/i2c/i2c_master.h" framework="" version="3.40.0" source="sam0\drivers\sercom\i2c\i2c_master.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/i2c/quick_start_master_dma/qs_i2c_master_dma.h" framework="" version="3.40.0" source="sam0\drivers\sercom\i2c\quick_start_master_dma\qs_i2c_master_dma.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/i2c/i2c_samd20/i2c_master.c" framework="" version="3.40.0" source="sam0\drivers\sercom\i2c\i2c_samd20\i2c_master.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/i2c/i2c_samd20/i2c_master_interrupt.c" framework="" version="3.40.0" source="sam0\drivers\sercom\i2c\i2c_samd20\i2c_master_interrupt.c" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.40.0/common.applications.user_application.sam0_system.user_board.atsamd20j18/html/index.html" />
   <offline-documentation help="" />
@@ -251,6 +260,7 @@
       <Value>ARM_MATH_CM0PLUS=true</Value>
       <Value>SYSTICK_MODE</Value>
       <Value>USART_CALLBACK_MODE=true</Value>
+      <Value>I2C_MASTER_CALLBACK_MODE=true</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.IncludePaths>
@@ -282,6 +292,8 @@
       <Value>../src/ASF/common2/services/delay/sam0</Value>
       <Value>../src/ASF/sam0/drivers/sercom</Value>
       <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c/i2c_samd20</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
@@ -332,9 +344,11 @@
       <Value>../src/ASF/common2/services/delay/sam0</Value>
       <Value>../src/ASF/sam0/drivers/sercom</Value>
       <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c/i2c_samd20</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
-  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=USER_BOARD -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true</armgcc.preprocessingassembler.general.AssemblerFlags>
+  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=USER_BOARD -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true -DI2C_MASTER_CALLBACK_MODE=true</armgcc.preprocessingassembler.general.AssemblerFlags>
   <armgcc.preprocessingassembler.general.IncludePaths>
     <ListValues>
       <Value>../src/ASF/common/boards</Value>
@@ -364,6 +378,8 @@
       <Value>../src/ASF/common2/services/delay/sam0</Value>
       <Value>../src/ASF/sam0/drivers/sercom</Value>
       <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c/i2c_samd20</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
 </ArmGcc>
@@ -384,6 +400,7 @@
       <Value>ARM_MATH_CM0PLUS=true</Value>
       <Value>SYSTICK_MODE</Value>
       <Value>USART_CALLBACK_MODE=true</Value>
+      <Value>I2C_MASTER_CALLBACK_MODE=true</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.IncludePaths>
@@ -415,6 +432,8 @@
       <Value>../src/ASF/common2/services/delay/sam0</Value>
       <Value>../src/ASF/sam0/drivers/sercom</Value>
       <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c/i2c_samd20</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -466,10 +485,12 @@
       <Value>../src/ASF/common2/services/delay/sam0</Value>
       <Value>../src/ASF/sam0/drivers/sercom</Value>
       <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c/i2c_samd20</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
   <armgcc.assembler.debugging.DebugLevel>Default (-g)</armgcc.assembler.debugging.DebugLevel>
-  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=USER_BOARD -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true</armgcc.preprocessingassembler.general.AssemblerFlags>
+  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=USER_BOARD -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true -DI2C_MASTER_CALLBACK_MODE=true</armgcc.preprocessingassembler.general.AssemblerFlags>
   <armgcc.preprocessingassembler.general.IncludePaths>
     <ListValues>
       <Value>../src/ASF/common/boards</Value>
@@ -499,6 +520,8 @@
       <Value>../src/ASF/common2/services/delay/sam0</Value>
       <Value>../src/ASF/sam0/drivers/sercom</Value>
       <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/i2c/i2c_samd20</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
   <armgcc.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcc.preprocessingassembler.debugging.DebugLevel>
@@ -523,6 +546,11 @@
     <Folder Include="src\ASF\sam0\drivers\port\" />
     <Folder Include="src\ASF\sam0\drivers\port\quick_start\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\i2c\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\i2c\quick_start_master\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\i2c\quick_start_master_callback\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\i2c\quick_start_master_dma\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\usart\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start_callback\" />
@@ -564,6 +592,30 @@
     <Folder Include="src\config\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_master.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_master_interrupt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\sam0\drivers\sercom\i2c\quick_start_master_dma\qs_i2c_master_dma.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\i2c\i2c_master.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\i2c\quick_start_master\qs_i2c_master_basic_use.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\i2c\quick_start_master_callback\qs_i2c_master_callback.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\i2c\i2c_common.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\i2c\i2c_master_interrupt.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\ASF\sam0\drivers\sercom\sercom.c">
       <SubType>compile</SubType>
     </Compile>

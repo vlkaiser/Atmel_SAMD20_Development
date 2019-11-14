@@ -2,6 +2,10 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_master.c
+
+src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_master_interrupt.c
+
 src\ASF\sam0\drivers\sercom\sercom.c
 
 src\ASF\sam0\drivers\sercom\usart\usart.c
