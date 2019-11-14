@@ -25,4 +25,9 @@ void config_board(void)
 {
 	config_led();
 	delay_init();
+
+	configure_usart();
+	configure_usart_callbacks();
+
+	system_interrupt_enable_global();	//Enable Interrupts for callbacks
 }

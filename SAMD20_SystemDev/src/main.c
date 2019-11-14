@@ -38,6 +38,7 @@ int main (void)
 	system_init();
 	config_board();
 
+	usart_Hello();
 	while(true)
 	{
 		port_pin_toggle_output_level( LED_0_PIN );
