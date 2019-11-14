@@ -23,11 +23,18 @@
 
 void config_board(void)
 {
+ 	/*Configure system tick to generate periodic interrupts */
+ 	SysTick_Config(system_gclk_gen_get_hz(GCLK_GENERATOR_0));
+
 	config_led();
 	delay_init();
 
 	configure_usart();
 	configure_usart_callbacks();
 
+	configure_i2c_master();
+
 	system_interrupt_enable_global();	//Enable Interrupts for callbacks
+
+
 }
