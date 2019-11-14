@@ -6,8 +6,8 @@
  */ 
 
 
-#ifndef DEF_TYPES_H_
-#define DEF_TYPES_H_
+#ifndef DC_DEFTYPES_H_
+#define DC_DEFTYPES_H_
 
 
 #define __vo		volatile
@@ -31,4 +31,4 @@
 
 
 
-#endif /* DEF_TYPES_H_ */
+#endif /* DC_DEFTYPES_H_ */

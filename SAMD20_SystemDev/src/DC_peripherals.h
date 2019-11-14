@@ -6,15 +6,15 @@
  */ 
 
 
-#ifndef PERIPHERALS_H_
-#define PERIPHERALS_H_
+#ifndef DC_PERIPHERALS_H_
+#define DC_PERIPHERALS_H_
 
 #include "main.h"
-#include "user_board.h"
+//#include "user_board.h"
 
 /* Prototypes */
 void config_led(void);
 
 
 
-#endif /* PERIPHERALS_H_ */
+#endif /* DC_PERIPHERALS_H_ */

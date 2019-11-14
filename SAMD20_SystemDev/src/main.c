@@ -41,7 +41,7 @@ int main (void)
 	while(true)
 	{
 		port_pin_toggle_output_level( LED_0_PIN );
-		delay_ms(500);
+		delay_ms(100);
 	}
 
 }//main

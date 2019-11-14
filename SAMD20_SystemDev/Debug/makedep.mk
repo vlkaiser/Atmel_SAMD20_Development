@@ -2,11 +2,21 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\sam0\drivers\sercom\sercom.c
+
+src\ASF\sam0\drivers\sercom\usart\usart.c
+
+src\ASF\sam0\drivers\sercom\usart\usart_interrupt.c
+
+src\ASF\sam0\drivers\sercom\sercom_interrupt.c
+
+src\DC_SERCOM.c
+
 src\ASF\common2\services\delay\sam0\systick_counter.c
 
 src\ASF\sam0\drivers\port\port.c
 
-src\peripherals.c
+src\DC_peripherals.c
 
 src\ASF\common2\boards\user_board\init.c
 

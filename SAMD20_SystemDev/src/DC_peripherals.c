@@ -5,7 +5,7 @@
  *  Author: VKaiser
  */ 
 
- #include "peripherals.h"
+ #include "DC_peripherals.h"
  
 
 

@@ -11,8 +11,9 @@
 
 #include <asf.h>
 #include "user_board.h"
-#include "def_types.h"
-#include "peripherals.h"
+#include "DC_deftypes.h"
+#include "DC_peripherals.h"
+#include "DC_SERCOM.h"
 
 
 

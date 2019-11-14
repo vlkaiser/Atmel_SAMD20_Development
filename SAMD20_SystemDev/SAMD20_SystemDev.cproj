@@ -20,10 +20,10 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
@@ -32,10 +32,11 @@
       <framework-data>
   <options>
     <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common2.services.delay" value="Add" config="systick" content-id="Atmel.ASF" />
     <option id="sam0.drivers.port" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.drivers.system" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.drivers.system.clock" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="common2.services.delay" value="Add" config="systick" content-id="Atmel.ASF" />
+    <option id="sam0.drivers.sercom.usart" value="Add" config="callback" content-id="Atmel.ASF" />
     <option id="sam0.utils.linker_scripts" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations />
@@ -195,6 +196,19 @@
     <file path="src/ASF/common2/services/delay/sam0/systick_counter.c" framework="" version="3.40.0" source="common2\services\delay\sam0\systick_counter.c" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/common2/services/delay/delay.h" framework="" version="3.40.0" source="common2\services\delay\delay.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/common2/services/delay/sam0/systick_counter.h" framework="" version="3.40.0" source="common2\services\delay\sam0\systick_counter.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/sercom_interrupt.c" framework="" version="3.40.0" source="sam0\drivers\sercom\sercom_interrupt.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/sercom.c" framework="" version="3.40.0" source="sam0\drivers\sercom\sercom.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/sercom_interrupt.h" framework="" version="3.40.0" source="sam0\drivers\sercom\sercom_interrupt.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/sercom_pinout.h" framework="" version="3.40.0" source="sam0\drivers\sercom\sercom_pinout.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/sercom.h" framework="" version="3.40.0" source="sam0\drivers\sercom\sercom.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/usart/usart.c" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\usart.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/usart/usart_interrupt.c" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\usart_interrupt.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/usart/quick_start_lin/qs_lin.h" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\quick_start_lin\qs_lin.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/usart/quick_start/qs_usart_basic_use.h" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\quick_start\qs_usart_basic_use.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/usart/usart_interrupt.h" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\usart_interrupt.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/usart/quick_start_callback/qs_usart_callback.h" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\quick_start_callback\qs_usart_callback.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/usart/usart.h" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\usart.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/sercom/usart/quick_start_dma/qs_usart_dma_use.h" framework="" version="3.40.0" source="sam0\drivers\sercom\usart\quick_start_dma\qs_usart_dma_use.h" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.40.0/common.applications.user_application.sam0_system.user_board.atsamd20j18/html/index.html" />
   <offline-documentation help="" />
@@ -205,6 +219,22 @@
   <board id="board.user_board.samd20j" value="Add" config="" content-id="Atmel.ASF" />
 </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.edbg</avrtool>
+    <avrtoolserialnumber>ATML1873060200018346</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0x10001400</avrdeviceexpectedsignature>
+    <avrtoolinterface>SWD</avrtoolinterface>
+    <com_atmel_avrdbg_tool_edbg>
+      <ToolOptions>
+        <InterfaceProperties>
+          <SwdClock>2000000</SwdClock>
+        </InterfaceProperties>
+        <InterfaceName>SWD</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.edbg</ToolType>
+      <ToolNumber>ATML1873060200018346</ToolNumber>
+      <ToolName>EDBG</ToolName>
+    </com_atmel_avrdbg_tool_edbg>
+    <avrtoolinterfaceclock>2000000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -220,6 +250,7 @@
       <Value>BOARD=USER_BOARD</Value>
       <Value>ARM_MATH_CM0PLUS=true</Value>
       <Value>SYSTICK_MODE</Value>
+      <Value>USART_CALLBACK_MODE=true</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.IncludePaths>
@@ -249,6 +280,8 @@
       <Value>../src/ASF/sam0/drivers/port</Value>
       <Value>../src/ASF/common2/services/delay</Value>
       <Value>../src/ASF/common2/services/delay/sam0</Value>
+      <Value>../src/ASF/sam0/drivers/sercom</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
@@ -297,9 +330,11 @@
       <Value>../src/ASF/sam0/drivers/port</Value>
       <Value>../src/ASF/common2/services/delay</Value>
       <Value>../src/ASF/common2/services/delay/sam0</Value>
+      <Value>../src/ASF/sam0/drivers/sercom</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
-  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=USER_BOARD -DSYSTICK_MODE</armgcc.preprocessingassembler.general.AssemblerFlags>
+  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=USER_BOARD -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true</armgcc.preprocessingassembler.general.AssemblerFlags>
   <armgcc.preprocessingassembler.general.IncludePaths>
     <ListValues>
       <Value>../src/ASF/common/boards</Value>
@@ -327,6 +362,8 @@
       <Value>../src/ASF/sam0/drivers/port</Value>
       <Value>../src/ASF/common2/services/delay</Value>
       <Value>../src/ASF/common2/services/delay/sam0</Value>
+      <Value>../src/ASF/sam0/drivers/sercom</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
 </ArmGcc>
@@ -346,6 +383,7 @@
       <Value>BOARD=USER_BOARD</Value>
       <Value>ARM_MATH_CM0PLUS=true</Value>
       <Value>SYSTICK_MODE</Value>
+      <Value>USART_CALLBACK_MODE=true</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.IncludePaths>
@@ -375,6 +413,8 @@
       <Value>../src/ASF/sam0/drivers/port</Value>
       <Value>../src/ASF/common2/services/delay</Value>
       <Value>../src/ASF/common2/services/delay/sam0</Value>
+      <Value>../src/ASF/sam0/drivers/sercom</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -424,10 +464,12 @@
       <Value>../src/ASF/sam0/drivers/port</Value>
       <Value>../src/ASF/common2/services/delay</Value>
       <Value>../src/ASF/common2/services/delay/sam0</Value>
+      <Value>../src/ASF/sam0/drivers/sercom</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
   <armgcc.assembler.debugging.DebugLevel>Default (-g)</armgcc.assembler.debugging.DebugLevel>
-  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=USER_BOARD -DSYSTICK_MODE</armgcc.preprocessingassembler.general.AssemblerFlags>
+  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=USER_BOARD -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true</armgcc.preprocessingassembler.general.AssemblerFlags>
   <armgcc.preprocessingassembler.general.IncludePaths>
     <ListValues>
       <Value>../src/ASF/common/boards</Value>
@@ -455,6 +497,8 @@
       <Value>../src/ASF/sam0/drivers/port</Value>
       <Value>../src/ASF/common2/services/delay</Value>
       <Value>../src/ASF/common2/services/delay/sam0</Value>
+      <Value>../src/ASF/sam0/drivers/sercom</Value>
+      <Value>../src/ASF/sam0/drivers/sercom/usart</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
   <armgcc.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcc.preprocessingassembler.debugging.DebugLevel>
@@ -478,6 +522,12 @@
     <Folder Include="src\ASF\sam0\drivers\" />
     <Folder Include="src\ASF\sam0\drivers\port\" />
     <Folder Include="src\ASF\sam0\drivers\port\quick_start\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\usart\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start_callback\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start_dma\" />
+    <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start_lin\" />
     <Folder Include="src\ASF\sam0\drivers\system\" />
     <Folder Include="src\ASF\sam0\drivers\system\clock\" />
     <Folder Include="src\ASF\sam0\drivers\system\clock\clock_samd20\" />
@@ -514,6 +564,51 @@
     <Folder Include="src\config\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\ASF\sam0\drivers\sercom\sercom.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\sam0\drivers\sercom\usart\quick_start_dma\qs_usart_dma_use.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\usart\usart.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\usart\quick_start_callback\qs_usart_callback.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\usart\usart_interrupt.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\usart\quick_start\qs_usart_basic_use.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\usart\quick_start_lin\qs_lin.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\sam0\drivers\sercom\usart\usart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\sam0\drivers\sercom\usart\usart_interrupt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\sam0\drivers\sercom\sercom.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\sam0\drivers\sercom\sercom_interrupt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\sam0\drivers\sercom\sercom_pinout.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\sercom\sercom_interrupt.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\DC_SERCOM.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\DC_SERCOM.h">
+      <SubType>compile</SubType>
+    </Compile>
     <None Include="src\ASF\common2\services\delay\sam0\systick_counter.h">
       <SubType>compile</SubType>
     </None>
@@ -526,10 +621,10 @@
     <Compile Include="src\ASF\sam0\drivers\port\port.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\peripherals.c">
+    <Compile Include="src\DC_peripherals.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\peripherals.h">
+    <Compile Include="src\DC_peripherals.h">
       <SubType>compile</SubType>
     </Compile>
     <None Include="src\ASF\sam0\drivers\port\port.h">
@@ -538,7 +633,7 @@
     <None Include="src\ASF\sam0\drivers\port\quick_start\qs_port_basic.h">
       <SubType>compile</SubType>
     </None>
-    <Compile Include="src\def_types.h">
+    <Compile Include="src\DC_deftypes.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.h">
