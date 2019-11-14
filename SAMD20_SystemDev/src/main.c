@@ -41,8 +41,11 @@ int main (void)
 	usart_Hello();
 	while(true)
 	{
-		port_pin_toggle_output_level( LED_0_PIN );
-		delay_ms(100);
+		//port_pin_toggle_output_level( LED_0_PIN );
+		//delay_ms(100);
+
+		//In Terminal, echo every 5 characters typed forever and toggle LED0
+		usart_Echo();
 	}
 
 }//main
