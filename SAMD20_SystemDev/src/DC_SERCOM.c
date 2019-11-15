@@ -145,17 +145,18 @@ uint8_t newLine[] = "\r\n";
 	 config_i2c_master.buffer_timeout = 10000;
 
 	 /* Initialize and enable device with config. */
-	 //i2c_master_init(&i2c_master_instance, CONF_I2C_MASTER_MODULE, &config_i2c_master);
-	 // SERCOM0 PAD[0] PA08 - SDA
+	 	 // SERCOM0 PAD[0] PA08 - SDA
 	 // SERCOM0 PAD[1] PA09 - SCL
-	// config_i2c_master.pinmux_pad0    = PINMUX_PA08C_SERCOM0_PAD0;
+	 //i2c_master_init(&i2c_master_instance, SERCOM0, &config_i2c_master);
+	 //config_i2c_master.pinmux_pad0    = PINMUX_PA08C_SERCOM0_PAD0;
 	 //config_i2c_master.pinmux_pad1    = PINMUX_PA09C_SERCOM0_PAD1;
 
-	
+	//Xplained Pro board has one I2C shared between the 3 EXTn	- SERCOM2 PAD[0] and PAD[1] identified as PA08 and PA09
+	//Therefore....
 	i2c_master_init(&i2c_master_instance, SERCOM2, &config_i2c_master);
-	config_i2c_master.pinmux_pad0    = PINMUX_PA12C_SERCOM2_PAD0;
-	config_i2c_master.pinmux_pad1    = PINMUX_PA13C_SERCOM2_PAD1;
-	
+	 config_i2c_master.pinmux_pad0    = PINMUX_PA08D_SERCOM2_PAD0;
+	 config_i2c_master.pinmux_pad1    = PINMUX_PA09D_SERCOM2_PAD1;
+	 	
 	 i2c_master_enable(&i2c_master_instance);
 
  }// configure_i2c_master

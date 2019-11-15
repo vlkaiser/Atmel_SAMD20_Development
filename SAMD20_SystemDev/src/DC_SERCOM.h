@@ -11,8 +11,6 @@
 
 #include "main.h"
 
-#define CONF_I2C_MASTER_MODULE SERCOM0
-
 #define MAX_RX_BUFFER_LENGTH	5
 #define I2C_SLAVE_ADDRESS		0x18
 #define I2C_DATA_LENGTH			10
