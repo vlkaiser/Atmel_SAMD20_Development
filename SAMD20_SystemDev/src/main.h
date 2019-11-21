@@ -15,6 +15,6 @@
 #include "DC_peripherals.h"
 #include "DC_SERCOM.h"
 
-
+void sensorRead(void);
 
 #endif /* MAIN_H_ */

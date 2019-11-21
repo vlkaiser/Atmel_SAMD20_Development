@@ -33,6 +33,7 @@ void config_board(void)
 	configure_usart_callbacks();
 
 	configure_i2c_master();
+	configure_i2c_callbacks();
 
 	system_interrupt_enable_global();	//Enable Interrupts for callbacks
 

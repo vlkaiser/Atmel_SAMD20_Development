@@ -6,14 +6,7 @@
  */ 
  #include "DC_SERCOM.h"
 
- /* 
-* Global Variables 
-*/
-struct usart_module	usart_instance;
-struct i2c_master_module i2c_master_instance;
-struct i2c_master_config config_i2c_master;
-struct i2c_master_packet write_packet;
-struct i2c_master_packet read_packet;
+
 
 /* Timeout counter. */
 uint16_t timeout = 0;
@@ -153,13 +146,36 @@ uint8_t newLine[] = "\r\n";
 
 	//Xplained Pro board has one I2C shared between the 3 EXTn	- SERCOM2 PAD[0] and PAD[1] identified as PA08 and PA09
 	//Therefore....
-	i2c_master_init(&i2c_master_instance, SERCOM2, &config_i2c_master);
 	 config_i2c_master.pinmux_pad0    = PINMUX_PA08D_SERCOM2_PAD0;
 	 config_i2c_master.pinmux_pad1    = PINMUX_PA09D_SERCOM2_PAD1;
-	 	
+	
+	 i2c_master_init(&i2c_master_instance, SERCOM2, &config_i2c_master);	 	
 	 i2c_master_enable(&i2c_master_instance);
 
  }// configure_i2c_master
+
+ /**********************************************************************
+ * @fn					- configure_i2c_callbacks
+ * @brief				- Write buffer to slave until success.
+ *
+ * @param[in]			- 
+ *
+ * @return				- void
+ *
+ * @note				- called from main
+ **********************************************************************/
+ void configure_i2c_callbacks(void)
+{
+	/* Register callback function. */
+
+	i2c_master_register_callback(&i2c_master_instance, i2c_write_complete_callback,
+			I2C_MASTER_CALLBACK_WRITE_COMPLETE);
+
+	i2c_master_enable_callback(&i2c_master_instance,
+			I2C_MASTER_CALLBACK_WRITE_COMPLETE);
+
+}
+//configure_i2c_callbacks
 
  /**********************************************************************
  * @fn					- i2c_Write
@@ -169,23 +185,41 @@ uint8_t newLine[] = "\r\n";
  * @param[in]			- *read_buffer: buffer eg uint8_t buffer[I2C_DATA_LENGTTH] = {0xAA, 0xBB};
  * @param[in]			- size: sizeof(buffer)
  *
- * @return				- void
+ * @return				- 0
  *
  * @note				- called from main
  **********************************************************************/
-  void i2c_Write(uint8_t i2c_addr, uint8_t *write_buffer, uint8_t size)
+int8_t i2c_Write(uint8_t i2c_addr, uint8_t reg_addr, uint8_t *write_buffer, uint8_t len)
  {
+
+	 /*
+ 	uint8_t merged_data[len + 1];
+ 	merged_data[0] = reg_addr;
+ 	
+ 	for(uint16_t i = 0; i < len; i++)
+ 	merged_data[i + 1] = reg_data[i];
+
+	write_packet.data = merged_data;
+	write_packet.data_length = len+1;
+	*/
+
+
 	write_packet.address = i2c_addr;
 	write_packet.data = write_buffer;
-	write_packet.data_length = size;
+	write_packet.data_length = len;
+	read_packet.ten_bit_address = FALSE;
+	read_packet.high_speed = FALSE;
 
 	while (i2c_master_write_packet_wait(&i2c_master_instance, &write_packet) != STATUS_OK) 
 	{
 		/* Increment timeout counter and check if timed out. */
 		if (timeout++ == I2C_TIMEOUT) {
+		return -1;
 			break;
 		}
 	}
+
+	return 0;
  } //i2c_Write
 
   /**********************************************************************
@@ -196,23 +230,62 @@ uint8_t newLine[] = "\r\n";
  * @param[in]			- *read_buffer: buffer eg uint8_t buffer[I2C_DATA_LENGTTH] = {0xAA, 0xBB};						
  * @param[in]			- size: sizeof(buffer)
  *
- * @return				- void
+ * @return				- 0
  *
  * @note				- called from main
  **********************************************************************/
-  void i2c_Read(uint8_t i2c_addr, uint8_t *read_buffer, uint8_t size)
+int8_t i2c_Read(uint8_t i2c_addr, uint8_t reg_addr, uint8_t *read_buffer, uint8_t len)
  {
+	//Write to Address, Register
 	read_packet.address = i2c_addr;
-	read_packet.data = read_buffer;
-	read_packet.data_length = size;
-
-	while (i2c_master_read_packet_wait(&i2c_master_instance, &read_packet) != STATUS_OK) 
+	read_packet.data = &reg_addr;
+	//read_packet.data = &reg_addr;
+	read_packet.data_length = 1;
+	read_packet.ten_bit_address = FALSE;
+	read_packet.high_speed = FALSE;
+	
+	while (i2c_master_write_packet_wait(&i2c_master_instance, &read_packet) != STATUS_OK) 
 	{
 		/* Increment timeout counter and check if timed out. */
 		if (timeout++ == I2C_TIMEOUT) {
+			return -1;
 			break;
 		}
 	}
- }// i2c_Read
 
+	// Read from Address, register
+	read_packet.data = read_buffer;
+	read_packet.data_length = len;
+
+	while (i2c_master_read_packet_wait(&i2c_master_instance, &read_packet) != STATUS_OK)
+	{
+		/* Increment timeout counter and check if timed out. */
+		if (timeout++ == I2C_TIMEOUT) {
+			return -1;
+			break;
+		}
+	}
+
+	return 0;
+
+ }// i2c_Read
+ 
+/**********************************************************************
+ * @fn					- i2c_write_complete_callback
+ * @brief				- Read write to slave until success.
+ *
+ * @param[in]			- struct i2c_master_module
+ * @param[in]			-  *const module					
+ * @param[in]			- 
+ *
+ * @return				- void
+ *
+ * @note				- called from main
+ **********************************************************************/ 
+ void i2c_write_complete_callback(struct i2c_master_module *const module)
+{
+	/* Initiate new packet read */
+	i2c_master_read_packet_job(&i2c_master_instance,&read_packet);
+}
+// i2c_write_complete_callback
  
