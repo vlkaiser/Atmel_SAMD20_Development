@@ -16,5 +16,6 @@
 #include "DC_SERCOM.h"
 
 void sensorRead(void);
+void flashLED(void);
 
 #endif /* MAIN_H_ */

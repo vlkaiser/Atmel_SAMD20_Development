@@ -138,7 +138,7 @@ uint8_t newLine[] = "\r\n";
 	 config_i2c_master.buffer_timeout = 10000;
 
 	 /* Initialize and enable device with config. */
-	 	 // SERCOM0 PAD[0] PA08 - SDA
+	 // SERCOM0 PAD[0] PA08 - SDA
 	 // SERCOM0 PAD[1] PA09 - SCL
 	 //i2c_master_init(&i2c_master_instance, SERCOM0, &config_i2c_master);
 	 //config_i2c_master.pinmux_pad0    = PINMUX_PA08C_SERCOM0_PAD0;
@@ -213,19 +213,7 @@ int8_t i2c_Write(uint8_t i2c_addr, uint8_t reg_addr, uint8_t *write_buffer, uint
 			break;
 		}
 	}
-/*
-	write_packet.data = write_buffer;
-	write_packet.data_length = len;
 
-	while (i2c_master_write_packet_wait(&i2c_master_instance, &write_packet) != STATUS_OK) 
-	{
-		// Increment timeout counter and check if timed out. 
-		if (timeout++ == I2C_TIMEOUT) {
-		return -1;
-			break;
-		}
-	}
-*/
 	return 0;
  } //i2c_Write
 

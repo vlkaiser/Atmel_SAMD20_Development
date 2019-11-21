@@ -44,6 +44,19 @@ void sensorRead(void)
 	port_pin_toggle_output_level( LED_0_PIN );
 }
 
+void flashLED(void)
+{
+// IO Panel LEDs on PA06, PA05, PB14 and PB15
+port_pin_toggle_output_level( LED_PWR_RED_PIN );
+delay_ms(100);
+port_pin_toggle_output_level( LED_PWR_GREEN_PIN );
+delay_ms(100);
+port_pin_toggle_output_level( LED_MEAS_WHITE_PIN );
+delay_ms(100);
+port_pin_toggle_output_level( LED_STOP_RED_PIN );
+
+}
+
 int main (void)
 {
 	system_init();
@@ -73,6 +86,8 @@ int main (void)
 		i2c_Write(sensorADDR, cfgReg, wr_buffer, 1);
 		port_pin_toggle_output_level( LED_0_PIN );
 		delay_ms(100);
+
+		flashLED();
 
 	}
 

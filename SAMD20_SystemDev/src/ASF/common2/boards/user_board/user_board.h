@@ -49,6 +49,7 @@ void config_board(void);
 #define BOARD_OSC_STARTUP_US      15625
 /** @} */
 
+//TODO - Update these for User Board (These are Discovery On-Board)
 /** \name LED0 definitions
  *  @{ */
 #define LED0_PIN                  PIN_PA14
