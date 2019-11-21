@@ -192,21 +192,16 @@ uint8_t newLine[] = "\r\n";
 int8_t i2c_Write(uint8_t i2c_addr, uint8_t reg_addr, uint8_t *write_buffer, uint8_t len)
  {
 
-	 /*
- 	uint8_t merged_data[len + 1];
- 	merged_data[0] = reg_addr;
+	// Merge Device Register and data to TX
+ 	uint8_t merged_packet[len + 1];
+ 	merged_packet[0] = reg_addr;
  	
  	for(uint16_t i = 0; i < len; i++)
- 	merged_data[i + 1] = reg_data[i];
-
-	write_packet.data = merged_data;
-	write_packet.data_length = len+1;
-	*/
-
+ 	merged_packet[i + 1] = write_buffer[i];
 
 	write_packet.address = i2c_addr;
-	write_packet.data = write_buffer;
-	write_packet.data_length = len;
+	write_packet.data = merged_packet;
+	write_packet.data_length = len + 1;
 	read_packet.ten_bit_address = FALSE;
 	read_packet.high_speed = FALSE;
 
@@ -218,7 +213,19 @@ int8_t i2c_Write(uint8_t i2c_addr, uint8_t reg_addr, uint8_t *write_buffer, uint
 			break;
 		}
 	}
+/*
+	write_packet.data = write_buffer;
+	write_packet.data_length = len;
 
+	while (i2c_master_write_packet_wait(&i2c_master_instance, &write_packet) != STATUS_OK) 
+	{
+		// Increment timeout counter and check if timed out. 
+		if (timeout++ == I2C_TIMEOUT) {
+		return -1;
+			break;
+		}
+	}
+*/
 	return 0;
  } //i2c_Write
 
@@ -239,7 +246,6 @@ int8_t i2c_Read(uint8_t i2c_addr, uint8_t reg_addr, uint8_t *read_buffer, uint8_
 	//Write to Address, Register
 	read_packet.address = i2c_addr;
 	read_packet.data = &reg_addr;
-	//read_packet.data = &reg_addr;
 	read_packet.data_length = 1;
 	read_packet.ten_bit_address = FALSE;
 	read_packet.high_speed = FALSE;
