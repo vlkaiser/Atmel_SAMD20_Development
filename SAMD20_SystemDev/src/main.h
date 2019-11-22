@@ -10,12 +10,16 @@
 #define MAIN_H_
 
 #include <asf.h>
+
 #include "user_board.h"
 #include "DC_deftypes.h"
 #include "DC_peripherals.h"
 #include "DC_SERCOM.h"
+#include "stdio.h"
+#include "string.h"
 
-void sensorRead(void);
+void sensorRead(uint8_t* rd_buf);
 void flashLED(void);
+void writeBufferOut(uint8_t* data);
 
 #endif /* MAIN_H_ */

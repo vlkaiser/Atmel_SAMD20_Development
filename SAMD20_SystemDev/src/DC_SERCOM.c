@@ -101,7 +101,8 @@ uint8_t newLine[] = "\r\n";
   void usart_Hello(void)
  {
  	uint8_t string[] = "Hello World!\r\n";
- 	usart_write_buffer_wait(&usart_instance, string, sizeof(string));
+	int len = sizeof(string);
+ 	usart_write_buffer_wait(&usart_instance, string, len);
  }//usart_Hello
 
   /**********************************************************************

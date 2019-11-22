@@ -124,7 +124,10 @@ src/DC_peripherals.d src/DC_peripherals.o: ../src/DC_peripherals.c \
  ../src/ASF/sam0/drivers/sercom/usart/usart.h \
  ../src/ASF/sam0/drivers/sercom/usart/usart_interrupt.h \
  ../src/ASF/sam0/drivers/sercom/usart/usart.h ../src/DC_deftypes.h \
- ../src/DC_SERCOM.h
+ ../src/DC_SERCOM.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h
 
 ../src/DC_peripherals.h:
 
@@ -389,3 +392,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/DC_deftypes.h:
 
 ../src/DC_SERCOM.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
