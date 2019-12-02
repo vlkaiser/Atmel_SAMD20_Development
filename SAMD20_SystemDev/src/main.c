@@ -106,7 +106,7 @@ int main(void)
 		port_pin_toggle_output_level( LED_0_PIN );
 		delay_ms(100);
 
-		flashLED();
+		//flashLED();
 
 		//TODO - Interrupts for Push Buttons
 

@@ -1,7 +1,7 @@
-src/ASF/common2/boards/user_board/init.d \
- src/ASF/common2/boards/user_board/init.o: \
- ../src/ASF/common2/boards/user_board/init.c ../src/asf.h \
- ../src/ASF/sam0/utils/compiler.h \
+src/ASF/sam0/drivers/extint/extint_callback.d \
+ src/ASF/sam0/drivers/extint/extint_callback.o: \
+ ../src/ASF/sam0/drivers/extint/extint_callback.c \
+ ../src/ASF/sam0/drivers/extint/extint.h ../src/ASF/sam0/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  ../src/ASF/common/utils/parts.h ../src/ASF/sam0/utils/status_codes.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h \
@@ -100,36 +100,10 @@ src/ASF/common2/boards/user_board/init.d \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\alloca.h \
  ../src/ASF/common/utils/interrupt.h \
  ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h \
- ../src/ASF/common2/boards/user_board/user_board.h \
- ../src/config/conf_board.h ../src/ASF/common2/services/delay/delay.h \
- ../src/ASF/common2/services/delay/sam0/systick_counter.h \
- ../src/ASF/sam0/drivers/system/clock/clock.h \
- ../src/ASF/sam0/drivers/system/clock/gclk.h \
- ../src/ASF/sam0/drivers/system/clock/clock_samd20/clock_feature.h \
- ../src/ASF/sam0/drivers/extint/extint.h \
  ../src/ASF/sam0/drivers/system/pinmux/pinmux.h \
- ../src/ASF/sam0/drivers/extint/extint_callback.h \
- ../src/ASF/sam0/drivers/extint/extint_callback.h \
- ../src/ASF/common/boards/board.h ../src/ASF/sam0/drivers/port/port.h \
- ../src/ASF/sam0/drivers/sercom/sercom.h \
- ../src/ASF/sam0/drivers/system/system.h \
- ../src/ASF/sam0/drivers/system/power/power_sam_d_r_h/power.h \
- ../src/ASF/sam0/drivers/system/reset/reset_sam_d_r_h/reset.h \
- ../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h \
- ../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samd20/system_interrupt_features.h \
- ../src/ASF/sam0/drivers/sercom/sercom_pinout.h \
- ../src/ASF/sam0/drivers/sercom/sercom_interrupt.h \
- ../src/ASF/sam0/drivers/sercom/sercom.h \
- ../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h \
- ../src/ASF/sam0/drivers/sercom/i2c/i2c_master.h \
- ../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h \
- ../src/ASF/sam0/drivers/sercom/i2c/i2c_master_interrupt.h \
- ../src/ASF/sam0/drivers/sercom/i2c/i2c_master.h \
- ../src/ASF/sam0/drivers/sercom/usart/usart.h \
- ../src/ASF/sam0/drivers/sercom/usart/usart_interrupt.h \
- ../src/ASF/sam0/drivers/sercom/usart/usart.h
+ ../src/ASF/sam0/drivers/extint/extint_callback.h
 
-../src/asf.h:
+../src/ASF/sam0/drivers/extint/extint.h:
 
 ../src/ASF/sam0/utils/compiler.h:
 
@@ -331,62 +305,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 
 ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h:
 
-../src/ASF/common2/boards/user_board/user_board.h:
-
-../src/config/conf_board.h:
-
-../src/ASF/common2/services/delay/delay.h:
-
-../src/ASF/common2/services/delay/sam0/systick_counter.h:
-
-../src/ASF/sam0/drivers/system/clock/clock.h:
-
-../src/ASF/sam0/drivers/system/clock/gclk.h:
-
-../src/ASF/sam0/drivers/system/clock/clock_samd20/clock_feature.h:
-
-../src/ASF/sam0/drivers/extint/extint.h:
-
 ../src/ASF/sam0/drivers/system/pinmux/pinmux.h:
 
 ../src/ASF/sam0/drivers/extint/extint_callback.h:
-
-../src/ASF/sam0/drivers/extint/extint_callback.h:
-
-../src/ASF/common/boards/board.h:
-
-../src/ASF/sam0/drivers/port/port.h:
-
-../src/ASF/sam0/drivers/sercom/sercom.h:
-
-../src/ASF/sam0/drivers/system/system.h:
-
-../src/ASF/sam0/drivers/system/power/power_sam_d_r_h/power.h:
-
-../src/ASF/sam0/drivers/system/reset/reset_sam_d_r_h/reset.h:
-
-../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h:
-
-../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samd20/system_interrupt_features.h:
-
-../src/ASF/sam0/drivers/sercom/sercom_pinout.h:
-
-../src/ASF/sam0/drivers/sercom/sercom_interrupt.h:
-
-../src/ASF/sam0/drivers/sercom/sercom.h:
-
-../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h:
-
-../src/ASF/sam0/drivers/sercom/i2c/i2c_master.h:
-
-../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h:
-
-../src/ASF/sam0/drivers/sercom/i2c/i2c_master_interrupt.h:
-
-../src/ASF/sam0/drivers/sercom/i2c/i2c_master.h:
-
-../src/ASF/sam0/drivers/sercom/usart/usart.h:
-
-../src/ASF/sam0/drivers/sercom/usart/usart_interrupt.h:
-
-../src/ASF/sam0/drivers/sercom/usart/usart.h:

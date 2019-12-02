@@ -39,10 +39,6 @@
 	 port_pin_set_output_level(LED_STOP_RED_PIN, LED_INACTIVE);
  }
 
-
-
-
-
 void config_board(void)
 {
  	/*Configure system tick to generate periodic interrupts */
@@ -58,7 +54,32 @@ void config_board(void)
 	configure_i2c_master();
 	configure_i2c_callbacks();
 
+	configure_extint_channel();	configure_extint_callbacks();
+
 	system_interrupt_enable_global();	//Enable Interrupts for callbacks
+}
 
+void configure_extint_channel(void)
+{
+	struct extint_chan_conf config_extint_chan;
+	extint_chan_get_config_defaults(&config_extint_chan);
+	
+	config_extint_chan.gpio_pin = BUTTON_0_EIC_PIN;
+	config_extint_chan.gpio_pin_mux = BUTTON_0_EIC_MUX;
+	config_extint_chan.gpio_pin_pull = EXTINT_PULL_UP;
+	config_extint_chan.detection_criteria = EXTINT_DETECT_BOTH;
+	
+	extint_chan_set_config(BUTTON_0_EIC_LINE, &config_extint_chan);
+}
+void configure_extint_callbacks(void)
+{
+	extint_register_callback(extint_detection_callback, BUTTON_0_EIC_LINE, EXTINT_CALLBACK_TYPE_DETECT);
+	extint_chan_enable_callback(BUTTON_0_EIC_LINE, EXTINT_CALLBACK_TYPE_DETECT);
+}
 
+void extint_detection_callback(void)
+{
+	bool button_pin_state = port_pin_get_input_level(BUTTON_0_PIN);
+	button_pin_state = !button_pin_state;
+	port_pin_set_output_level(LED_PWR_RED_PIN, button_pin_state);
 }
