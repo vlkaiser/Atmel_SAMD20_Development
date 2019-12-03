@@ -41,7 +41,7 @@ void sensorRead(uint8_t* rd_buf)
 	//static uint8_t rd_buf[2] = {0};	//expected 0x0054
 
 	i2c_Read(sensorADDR, mfgIDReg, rd_buf, 2);	
-	port_pin_toggle_output_level( LED_0_PIN );
+	//port_pin_toggle_output_level( LED_0_PIN );
 
 }
 
@@ -103,12 +103,12 @@ int main(void)
 		delay_ms(100);
 
 		i2c_Write(sensorADDR, cfgReg, wr_buffer, 1);
-		port_pin_toggle_output_level( LED_0_PIN );
+		//port_pin_toggle_output_level( LED_0_PIN );
 		delay_ms(100);
 
 		//flashLED();
 
-		//TODO - Interrupts for Push Buttons
+		//TODO - Interrupts for Push Buttons as callbacks
 
 	}
 
