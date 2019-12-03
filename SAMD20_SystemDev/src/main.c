@@ -75,9 +75,14 @@ port_pin_toggle_output_level( LED_STOP_RED_PIN );
 
 int main(void)
 {
+	/* Hard Power On: Initialize GPIO, Interrupts, Clock */
 	system_init();
 	config_board();
 
+	/* User Experience */
+	//Enable IO LEDs, hold
+	//PWR = Red, STOP = Off, MEAS = Off
+	//USART messages - validate communications with daughter boards
 	usart_Hello();
 
 	//uint8_t wr_buffer[I2C_DATA_LENGTH] = {0xAA};
@@ -90,6 +95,16 @@ int main(void)
 
 	while(true)
 	{
+		//TODO: Workflow
+		/*
+			Hard Power On
+
+		*/
+		port_pin_set_output_level(LED_PWR_RED_PIN, false);
+		port_pin_set_output_level(LED_PWR_GREEN_PIN, false);
+		port_pin_set_output_level(LED_MEAS_WHITE_PIN, false);
+		port_pin_set_output_level(LED_STOP_RED_PIN, false);
+
 		//port_pin_toggle_output_level( LED_0_PIN );
 		//delay_ms(100);
 
@@ -108,7 +123,6 @@ int main(void)
 
 		//flashLED();
 
-		//TODO - Interrupts for Push Buttons as callbacks
 
 	}
 

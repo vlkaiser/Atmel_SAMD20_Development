@@ -79,7 +79,7 @@ void configure_extint_Power(void)
 	config_extint_pwr.gpio_pin = BUTTON_PWR_PIN;
 	config_extint_pwr.gpio_pin_mux = BUTTON_PWR_EIC_MUX;
 	config_extint_pwr.gpio_pin_pull = EXTINT_PULL_UP;
-	config_extint_pwr.detection_criteria = EXTINT_DETECT_BOTH;
+	config_extint_pwr.detection_criteria = EXTINT_DETECT_FALLING;
 	
 	extint_chan_set_config(BUTTON_PWR_EIC_LINE, &config_extint_pwr);
 }
@@ -92,7 +92,7 @@ void configure_extint_Measure(void)
 	config_extint_meas.gpio_pin = BUTTON_MEAS_PIN;
 	config_extint_meas.gpio_pin_mux = BUTTON_MEAS_EIC_MUX;
 	config_extint_meas.gpio_pin_pull = EXTINT_PULL_UP;
-	config_extint_meas.detection_criteria = EXTINT_DETECT_BOTH;
+	config_extint_meas.detection_criteria = EXTINT_DETECT_FALLING;
 	
 	extint_chan_set_config(BUTTON_MEAS_EIC_LINE, &config_extint_meas);
 }
@@ -105,7 +105,7 @@ void configure_extint_EStop(void)
 	config_extint_estop.gpio_pin = BUTTON_ESTOP_PIN;
 	config_extint_estop.gpio_pin_mux = BUTTON_ESTOP_EIC_MUX;
 	config_extint_estop.gpio_pin_pull = EXTINT_PULL_UP;
-	config_extint_estop.detection_criteria = EXTINT_DETECT_BOTH;
+	config_extint_estop.detection_criteria = EXTINT_DETECT_FALLING;
 	
 	extint_chan_set_config(BUTTON_ESTOP_EIC_LINE, &config_extint_estop);
 }
@@ -134,21 +134,31 @@ void extint_detection_callback(void)
 
 void extint_detection_callback_pwr(void)
 {
+	delay_ms(100);
 	bool button_pin_state = port_pin_get_input_level(BUTTON_PWR_PIN);
 	button_pin_state = !button_pin_state;
 	port_pin_set_output_level(LED_PWR_RED_PIN, button_pin_state);
+	usart_write_buffer_wait(&usart_instance, "\r\POWER UP\r\n", 9 );
+
 }
 
 void extint_detection_callback_meas(void)
 {
+	delay_ms(100);
 	bool button_pin_state = port_pin_get_input_level(BUTTON_MEAS_PIN);
 	button_pin_state = !button_pin_state;
 	port_pin_set_output_level(LED_MEAS_WHITE_PIN, button_pin_state);
+	usart_write_buffer_wait(&usart_instance, "\r\nMEASURE\r\n", 9 );
+	
 }
 
 void extint_detection_callback_estop(void)
 {
+	delay_ms(200);
 	bool button_pin_state = port_pin_get_input_level(BUTTON_ESTOP_PIN);
 	button_pin_state = !button_pin_state;
 	port_pin_set_output_level(LED_STOP_RED_PIN, button_pin_state);
+	usart_write_buffer_wait(&usart_instance, "\r\nESTOP\r\n", 9 );
+	//occasionally get double interrupt - ?
+
 }
